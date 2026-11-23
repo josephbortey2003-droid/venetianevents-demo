@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>The Venetian Events Centre &amp; Rentals | New Gbawe, Accra · Weddings, naming ceremonies &amp; parties</title>
+<meta name="description" content="The Venetian Events Centre & Rentals, New Gbawe CP, Accra. A large natural-grass lawn, pavilion and indoor spaces for weddings, naming ceremonies, birthdays, graduations, funerals and get-togethers. Chairs, tents and decor rentals. Check your date on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* The Venetian — brand from THEIR photos: manicured lawn green, white building with orange balconies, red-roof
+   pavilion, white drapes + gold chairs. Unique style: "invitation card" for an events venue + Venetian arch frames.
+   DM Serif Display + Figtree (not used on other demos). Drop-down menu on phones. Light only. */
+:root {
+  --lawn: #2f6b34; --forest: #1d3a24; --leaf: #e7f1e3; --orange: #e0702b; --orange-d: #b8551b; --gold: #c39a45;
+  --cream: #fbf6ec; --paper: #fffdf8; --ink: #1f2420; --mute: #46504a; --line: #e4dccb;
+  --serif: "DM Serif Display", Georgia, serif; --sans: "Figtree", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+html, body { overflow-x: clip; }
+body { margin: 0; background: var(--cream); color: var(--ink); font: 400 18px/1.7 var(--sans); }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; color: var(--forest); margin: 0; letter-spacing: -.005em; }
+em { font-family: var(--serif); font-style: italic; color: var(--orange-d); }
+.demo { background: var(--forest); color: #dbe8d6; font-size: 13px; text-align: center; padding: 7px 12px; }
+
+/* invitation buttons: double-rule rectangle */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font: 700 15px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; padding: 17px 26px; background: var(--orange); color: #fff; text-decoration: none; border: 0; outline: 1px solid var(--orange); outline-offset: 4px; cursor: pointer; transition: background .2s, outline-offset .2s; }
+.btn:hover { background: var(--orange-d); outline-offset: 6px; }
+.btn.ghost { background: var(--paper); color: var(--forest); outline-color: var(--forest); }
+.btn.ghost:hover { background: var(--leaf); }
+.btn.green { background: var(--lawn); outline-color: var(--lawn); }
+
+/* header: crest centred */
+header.top { position: sticky; top: 0; z-index: 40; background: rgba(251,246,236,.97); border-bottom: 1px solid var(--line); }
+header.top .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; padding-block: 10px; }
+.top nav { display: flex; gap: 26px; font: 600 15px/1 var(--sans); }
+.top nav.r { justify-content: flex-end; align-items: center; }
+.top nav a { text-decoration: none; color: var(--forest); }
+.top nav a:hover { color: var(--orange-d); }
+.crest { display: flex; flex-direction: column; align-items: center; text-decoration: none; line-height: 1; }
+.crest svg { width: 46px; height: 46px; }
+.crest b { font: 400 24px/1 var(--serif); color: var(--forest); margin-top: 3px; }
+.crest small { font: 700 9.5px/1 var(--sans); letter-spacing: .28em; color: var(--orange-d); margin-top: 4px; }
+.menu-btn { display: none; justify-self: start; background: none; border: 1px solid var(--forest); color: var(--forest); padding: 10px 12px; font: 700 13px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; align-items: center; gap: 8px; }
+.menu-btn i { display: grid; gap: 4px; } .menu-btn i b { display: block; width: 16px; height: 2px; background: var(--forest); }
+.book-sm { display: none; justify-self: end; font: 700 13px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: #fff; background: var(--orange); padding: 11px 12px; text-decoration: none; }
+.drop { display: none; position: fixed; left: 0; right: 0; z-index: 45; background: var(--paper); border-bottom: 3px solid var(--lawn); box-shadow: 0 20px 40px rgba(29,58,36,.25); }
+.drop.open { display: block; }
+.drop a { display: block; padding: 15px 22px; font: 400 24px/1 var(--serif); color: var(--forest); text-decoration: none; border-top: 1px solid var(--line); }
+.scrim { display: none; position: fixed; inset: 0; z-index: 35; background: rgba(29,58,36,.45); }
+.scrim.open { display: block; }
+
+/* hero: lawn photo + invitation card */
+.hero { position: relative; min-height: min(88vh, 760px); display: grid; place-items: center; padding: 60px 20px; overflow: hidden; }
+.hero > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(29,58,36,.15), rgba(29,58,36,.45)); }
+.invite { position: relative; z-index: 1; width: min(620px, 100%); background: var(--paper); padding: 46px 40px 40px; text-align: center; box-shadow: 0 30px 70px rgba(0,0,0,.3); }
+.invite::before { content: ""; position: absolute; inset: 12px; border: 1px solid var(--gold); pointer-events: none; }
+.invite::after { content: ""; position: absolute; inset: 17px; border: 1px solid rgba(195,154,69,.45); pointer-events: none; }
+.invite .pre { font: 700 12.5px/1 var(--sans); letter-spacing: .3em; text-transform: uppercase; color: var(--orange-d); }
+.invite h1 { font-size: clamp(42px, 6vw, 68px); line-height: 1.02; margin: 16px 0 12px; }
+.invite p { color: var(--mute); margin: 0 auto 26px; max-width: 40ch; font-size: 18.5px; }
+.invite .ctas { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+.invite .where { margin-top: 26px; font: 600 14px/1.4 var(--sans); color: var(--lawn); letter-spacing: .04em; }
+.flourish { width: 120px; height: 14px; margin: 0 auto; color: var(--gold); }
+
+section { padding-block: 96px; }
+.pre { font: 700 12.5px/1 var(--sans); letter-spacing: .28em; text-transform: uppercase; color: var(--orange-d); margin: 0 0 14px; }
+h2 { font-size: clamp(40px, 5vw, 62px); line-height: 1.05; }
+.lede { color: var(--mute); font-size: 19px; max-width: 58ch; margin: 16px 0 0; }
+.center { text-align: center; } .center .lede { margin-inline: auto; }
+
+/* occasions: menu-card style */
+.occasions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 46px; border-top: 1px solid var(--line); border-left: 1px solid var(--line); background: var(--paper); }
+.occ { padding: 30px 26px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; transition: background .25s; }
+.occ:hover { background: var(--leaf); }
+.occ svg { width: 54px; height: 54px; margin: 0 auto 10px; color: var(--lawn); }
+.occ h3 { font-size: 27px; }
+.occ p { margin: 6px 0 0; color: var(--mute); font-size: 16px; }
+
+/* spaces: arch frames */
+.spaces { background: var(--leaf); }
+.arches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 50px; }
+.arch { margin: 0; }
+.arch .frame { border-radius: 999px 999px 6px 6px; overflow: hidden; aspect-ratio: 3 / 4; border: 6px solid var(--paper); box-shadow: 0 18px 40px rgba(29,58,36,.18); background: #ccd; }
+.arch img { width: 100%; height: 100%; object-fit: cover; }
+.arch figcaption { text-align: center; margin-top: 16px; }
+.arch figcaption b { display: block; font: 400 26px/1.1 var(--serif); color: var(--forest); }
+.arch figcaption span { font-size: 16px; color: var(--mute); }
+
+/* facilities + rentals */
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+.ticks { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
+.ticks li { display: flex; gap: 14px; align-items: flex-start; font-weight: 500; }
+.ticks li::before { content: ""; flex: 0 0 26px; height: 26px; border-radius: 50%; background: var(--lawn) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12l4 4 8-8' fill='none' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center/15px no-repeat; margin-top: 1px; }
+.rent { background: var(--paper); border: 1px solid var(--line); padding: 34px; position: relative; }
+.rent::before { content: ""; position: absolute; inset: 8px; border: 1px solid rgba(195,154,69,.5); pointer-events: none; }
+.rent img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: 50% 55%; margin-top: 18px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+.chips span { border: 1px solid var(--lawn); color: var(--lawn); padding: 7px 13px; font-size: 15px; font-weight: 600; }
+
+/* enquiry */
+.enquire { background: linear-gradient(160deg, var(--forest), #24492d 60%, var(--lawn)); color: #eaf2e6; }
+.enquire .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 50px; align-items: start; }
+.enquire h2 { color: #fff; } .enquire h2 em { color: #ffc98f; } .enquire .pre { color: #ffc98f; }
+.enquire .lede { color: #d8e6d3; }
+.steps { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 14px; counter-reset: s; }
+.steps li { counter-increment: s; display: flex; gap: 14px; align-items: baseline; }
+.steps li::before { content: counter(s); font: 400 30px/1 var(--serif); color: #ffc98f; min-width: 22px; }
+form.card { background: var(--paper); color: var(--ink); padding: 34px; position: relative; }
+form.card::before { content: ""; position: absolute; inset: 9px; border: 1px solid rgba(195,154,69,.6); pointer-events: none; }
+form.card h3 { font-size: 32px; margin-bottom: 18px; }
+form label { display: grid; gap: 6px; font: 700 13px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--lawn); margin-bottom: 16px; position: relative; }
+form input, form select, form textarea { font: 400 17px/1.4 var(--sans); padding: 13px 14px; border: 1px solid #cfc6b3; background: var(--cream); color: var(--ink); width: 100%; border-radius: 0; }
+form input:focus, form select:focus { outline: 2px solid var(--lawn); }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+fieldset { border: 0; padding: 0; margin: 0 0 18px; position: relative; }
+fieldset legend { font: 700 13px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--lawn); margin-bottom: 10px; }
+.checks { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.checks label { display: flex; align-items: center; gap: 10px; margin: 0; padding: 11px 12px; border: 1px solid #cfc6b3; background: var(--cream); font: 600 15px/1.2 var(--sans); letter-spacing: 0; text-transform: none; color: var(--ink); cursor: pointer; }
+.checks input { width: 18px; height: 18px; accent-color: var(--lawn); }
+
+/* reviews + visit */
+.quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
+blockquote { margin: 0; background: var(--paper); padding: 30px; border-top: 4px solid var(--orange); }
+blockquote p { margin: 0 0 12px; font: italic 400 23px/1.4 var(--serif); color: var(--forest); }
+blockquote cite { font-style: normal; font-weight: 700; font-size: 14px; color: var(--orange-d); letter-spacing: .04em; }
+.visit .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 50px; align-items: center; }
+.info { margin-top: 24px; border-top: 1px solid var(--line); }
+.info div { display: flex; justify-content: space-between; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--line); font-weight: 600; }
+.info small { font-weight: 500; color: var(--mute); text-align: right; font-size: 16px; }
+.map { aspect-ratio: 4 / 3; border: 6px solid var(--paper); box-shadow: 0 18px 40px rgba(29,58,36,.18); background: #dfe6d9; }
+.map iframe { width: 100%; height: 100%; border: 0; display: block; }
+footer { background: var(--forest); color: #cfdcc9; padding-block: 40px 100px; text-align: center; }
+footer b { display: block; font: 400 32px/1.1 var(--serif); color: #fff; }
+footer span { font-size: 15px; }
+.dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: none; background: var(--forest); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.dock a { flex: 1; text-align: center; padding: 17px 8px; color: #fff; font: 700 14px/1 var(--sans); text-transform: uppercase; letter-spacing: .06em; text-decoration: none; }
+.dock a + a { background: var(--orange); }
+.rv { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+.rv.in { opacity: 1; transform: none; }
+
+@media (max-width: 1000px) {
+  .top nav { display: none; }
+  .menu-btn { display: inline-flex; } .book-sm { display: inline-block; }
+  .occasions { grid-template-columns: 1fr 1fr; }
+  .two, .enquire .wrap, .visit .wrap { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  section { padding-block: 66px; }
+  .hero { min-height: 640px; padding: 40px 16px; }
+  .invite { padding: 40px 24px 32px; }
+  .occasions, .arches, .quotes, .row2 { grid-template-columns: 1fr; }
+  .checks { grid-template-columns: 1fr 1fr; }
+  .arch .frame { aspect-ratio: 4 / 4.4; }
+  .rent, form.card { padding: 26px 20px; }
+  .crest b { font-size: 20px; } .crest svg { width: 38px; height: 38px; }
+  .dock { display: flex; }
+  .invite .ctas .btn { width: calc(100% - 10px); }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } .rv { opacity: 1; transform: none; } html { scroll-behavior: auto; } }
+</style>
+<style>body{margin:0}</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="crest" viewBox="0 0 48 48"><path d="M8 44V22a16 16 0 0132 0v22" fill="none" stroke="#2f6b34" stroke-width="2.4"/><path d="M14 44V23a10 10 0 0120 0v21" fill="none" stroke="#c39a45" stroke-width="1.6"/><path d="M18 18l6 18 6-18" fill="none" stroke="#e0702b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 44h40" stroke="#2f6b34" stroke-width="2.4"/></symbol>
+  <symbol id="flourish" viewBox="0 0 120 14"><path d="M2 7h44M74 7h44" stroke="currentColor" stroke-width="1"/><path d="M60 2l5 5-5 5-5-5z" fill="currentColor"/><circle cx="50" cy="7" r="1.6" fill="currentColor"/><circle cx="70" cy="7" r="1.6" fill="currentColor"/></symbol>
+</defs></svg>
+
+<div class="demo">Demo website made for The Venetian Events Centre &amp; Rentals. Prices and final details to be confirmed by you.</div>
+
+<header class="top"><div class="wrap">
+  <nav aria-label="Primary"><a href="#occasions">Occasions</a><a href="#spaces">The grounds</a><a href="#rentals">Rentals</a></nav>
+  <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="drop"><i><b></b><b></b><b></b></i>Menu</button>
+  <a class="crest" href="#top" aria-label="The Venetian Events Centre home"><svg aria-hidden="true"><use href="#crest"/></svg><b>The Venetian</b><small>EVENTS CENTRE</small></a>
+  <nav class="r" aria-label="Secondary"><a href="#reviews">Reviews</a><a href="#visit">Find us</a><a class="btn" href="#enquire" style="padding:12px 16px;font-size:13px">Check a date</a></nav>
+  <a class="book-sm" href="#enquire">Book</a>
+</div></header>
+<div class="scrim" id="scrim"></div>
+<nav class="drop" id="drop" aria-label="Menu"><a href="#occasions">Occasions</a><a href="#spaces">The grounds</a><a href="#rentals">Rentals</a><a href="#enquire">Check a date</a><a href="#reviews">Reviews</a><a href="#visit">Find us</a></nav>
+
+<div class="hero" id="top">
+  <img src="img/lawn.webp" alt="The Venetian's green lawn and red-roofed pavilion under a bright sky" width="1400" height="1456">
+  <div class="invite rv">
+    <span class="pre">You're invited to celebrate</span>
+    <h1>Every moment, beautifully <em>hosted.</em></h1>
+    <svg class="flourish" aria-hidden="true"><use href="#flourish"/></svg>
+    <p style="margin-top:18px">A large natural-grass lawn, a garden pavilion and comfortable indoor spaces for weddings, naming ceremonies, birthdays and every celebration, at prices families can afford.</p>
+    <div class="ctas"><a class="btn" href="#enquire">Check your date</a><a class="btn ghost" href="#spaces">See the grounds</a></div>
+    <div class="where">New Gbawe CP · 11 SDA Hospital Road, Accra</div>
+  </div>
+</div>
+
+<section id="occasions"><div class="wrap">
+  <div class="center rv"><p class="pre">Occasions we host</p><h2>Open to every <em>celebration</em>, all year round.</h2></div>
+  <div class="occasions">
+    <div class="occ rv"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="28" r="10"/><circle cx="30" cy="28" r="10"/><path d="M20 10l4 6 4-6" stroke-linecap="round"/></svg><h3>Weddings</h3><p>Traditional, white weddings and receptions on the lawn.</p></div>
+    <div class="occ rv"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><circle cx="24" cy="16" r="6"/><path d="M12 40c0-8 5-14 12-14s12 6 12 14" stroke-linecap="round"/></svg><h3>Naming ceremonies</h3><p>Outdoorings and naming ceremonies for the new arrival.</p></div>
+    <div class="occ rv"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="10" y="22" width="28" height="18"/><path d="M10 30h28M18 22v-6M24 22v-8M30 22v-6" stroke-linecap="round"/></svg><h3>Birthdays &amp; parties</h3><p>Milestone birthdays, anniversaries and get-togethers.</p></div>
+    <div class="occ rv"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 18l20-10 20 10-20 10z"/><path d="M12 22v10c6 5 18 5 24 0V22M44 18v12" stroke-linecap="round"/></svg><h3>Graduations</h3><p>Graduation and matriculation celebrations.</p></div>
+    <div class="occ rv"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 6v36M14 16h20" stroke-linecap="round"/></svg><h3>Funerals &amp; memorials</h3><p>A dignified, spacious setting to celebrate a life.</p></div>
+    <div class="occ rv"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="12" width="32" height="22"/><path d="M16 40h16M24 34v6" stroke-linecap="round"/></svg><h3>Church &amp; corporate</h3><p>Programmes, retreats, meetings and community events.</p></div>
+  </div>
+</div></section>
+
+<section class="spaces" id="spaces"><div class="wrap">
+  <div class="center rv"><p class="pre">The grounds</p><h2>Room to <em>breathe</em>, and to celebrate.</h2><p class="lede">Manicured lawns, paved walkways and evening lamps, with indoor spaces for your guests and your party.</p></div>
+  <div class="arches">
+    <figure class="arch rv"><div class="frame"><img src="img/lawn-tall.webp" alt="Wide green lawn with the garden pavilion and lamp posts" loading="lazy"></div><figcaption><b>The Lawn</b><span>Large natural-grass grounds</span></figcaption></figure>
+    <figure class="arch rv"><div class="frame"><img src="img/setup.webp" alt="Event set-up with white drapes, long tables and gold chairs on the lawn" loading="lazy" style="object-position:40% 60%"></div><figcaption><b>Your set-up</b><span>Draped tents, tables and gold chairs</span></figcaption></figure>
+    <figure class="arch rv"><div class="frame"><img src="img/house.webp" alt="The Venetian's white building with orange balconies beside the lawn" loading="lazy" style="object-position:55% 40%"></div><figcaption><b>The House</b><span>Dressing and waiting rooms</span></figcaption></figure>
+  </div>
+</div></section>
+
+<section id="rentals"><div class="wrap two">
+  <div class="rv">
+    <p class="pre">Facilities</p>
+    <h2>Everything your guests <em>need.</em></h2>
+    <ul class="ticks">
+      <li>Large natural-grass lawn for big crowds</li>
+      <li>Garden pavilion</li>
+      <li>Dressing room for the couple or celebrant</li>
+      <li>Waiting room for VIPs and family</li>
+      <li>Washrooms for all guests</li>
+      <li>Wheelchair-accessible paths</li>
+      <li>Parking for cars and larger vehicles</li>
+    </ul>
+  </div>
+  <div class="rent rv">
+    <p class="pre">&amp; Rentals</p>
+    <h3 style="font-size:34px">Hire everything in one place</h3>
+    <p style="color:var(--mute);margin:10px 0 0">One call for your venue and your set-up. Ask us about availability when you check your date.</p>
+    <div class="chips"><span>Tents &amp; canopies</span><span>Chairs</span><span>Tables &amp; linen</span><span>Draping &amp; decor</span></div>
+    <img src="img/setup.webp" alt="White draped canopy with long tables set for guests" loading="lazy">
+  </div>
+</div></section>
+
+<section class="enquire" id="enquire"><div class="wrap">
+  <div class="rv">
+    <p class="pre">Check your date</p>
+    <h2>Let's plan your <em>day.</em></h2>
+    <p class="lede">Tell us about your event and we'll reply on WhatsApp with availability and our best price.</p>
+    <ol class="steps"><li>Send your date and guest numbers</li><li>We confirm availability and price</li><li>Visit the grounds and secure your date</li></ol>
+  </div>
+  <form class="card rv" id="form">
+    <h3>Event enquiry</h3>
+    <div class="row2">
+      <label>Type of event<select name="type"><option>Wedding</option><option>Naming ceremony</option><option>Birthday / party</option><option>Graduation / matriculation</option><option>Funeral / memorial</option><option>Church / corporate</option><option>Other</option></select></label>
+      <label>Event date<input type="date" name="date" required></label>
+    </div>
+    <div class="row2">
+      <label>Number of guests<select name="guests"><option>Up to 100</option><option>100 – 300</option><option>300 – 500</option><option>500+</option></select></label>
+      <label>Your name<input name="name" autocomplete="name" required></label>
+    </div>
+    <fieldset><legend>Do you also need</legend><div class="checks">
+      <label><input type="checkbox" name="r" value="Tents / canopies"> Tents</label>
+      <label><input type="checkbox" name="r" value="Chairs"> Chairs</label>
+      <label><input type="checkbox" name="r" value="Tables & linen"> Tables</label>
+      <label><input type="checkbox" name="r" value="Draping & decor"> Decor</label>
+    </div></fieldset>
+    <button class="btn" type="submit" style="width:calc(100% - 10px)">Send enquiry on WhatsApp</button>
+  </form>
+</div></section>
+
+<section id="reviews"><div class="wrap">
+  <div class="center rv"><p class="pre">What guests say</p><h2>4.4 stars from <em>355</em> reviews.</h2></div>
+  <div class="quotes">
+    <blockquote class="rv"><p>"Awesome place to host all events with affordable prices."</p><cite>GOOGLE REVIEW ★★★★★</cite></blockquote>
+    <blockquote class="rv"><p>"Open to all types of events and occasions any time of the year… a large land area with natural green grass."</p><cite>GOOGLE REVIEW ★★★★★</cite></blockquote>
+  </div>
+</div></section>
+
+<section class="visit" id="visit" style="padding-top:0"><div class="wrap">
+  <div class="rv">
+    <p class="pre">Find us</p>
+    <h2>New Gbawe, <em>Accra.</em></h2>
+    <div class="info">
+      <div>Address <small>11 SDA Hospital Road, New Gbawe CP</small></div>
+      <div>Phone &amp; WhatsApp <small>024 433 1249</small></div>
+      <div>Visits <small>Call ahead to view the grounds</small></div>
+    </div>
+    <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:26px"><a class="btn green" href="https://www.google.com/maps/dir/?api=1&destination=The%20Venetian%20Events%20Centre%20New%20Gbawe%20Accra" target="_blank" rel="noopener">Get directions</a><a class="btn ghost" href="tel:+233244331249">Call us</a></div>
+  </div>
+  <div class="map rv"><iframe title="Map: The Venetian Events Centre, New Gbawe" src="https://www.google.com/maps?q=The+Venetian+Events+Centre,+New+Gbawe,+Accra&ll=5.5893326,-0.3035493&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+</div></section>
+
+<footer><b>The Venetian</b><span>Events Centre &amp; Rentals · New Gbawe CP, Accra · 024 433 1249</span></footer>
+<div class="dock"><a href="tel:+233244331249">Call</a><a href="#enquire">Check a date</a></div>
+
+<script>
+(() => {
+  const WA = '233244331249';
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .1 }) : null;
+  document.querySelectorAll('.rv').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+  const btn = document.getElementById('menuBtn'), drop = document.getElementById('drop'), scrim = document.getElementById('scrim'), head = document.querySelector('header.top');
+  const close = () => { drop.classList.remove('open'); scrim.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); };
+  btn.onclick = () => { const o = !drop.classList.contains('open'); drop.style.top = head.getBoundingClientRect().bottom + 'px'; drop.classList.toggle('open', o); scrim.classList.toggle('open', o); btn.setAttribute('aria-expanded', o); };
+  scrim.onclick = close; drop.querySelectorAll('a').forEach(a => a.onclick = close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  const f = document.getElementById('form');
+  f.date.min = new Date().toISOString().slice(0, 10);
+  f.addEventListener('submit', e => {
+    e.preventDefault();
+    const rentals = [...f.querySelectorAll('input[name=r]:checked')].map(i => i.value);
+    const d = new Date(f.date.value + 'T00:00').toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+    let m = 'Hello The Venetian Events Centre! I would like to check a date.\n\nEvent: ' + f.type.value + '\nDate: ' + d + '\nGuests: ' + f.guests.value;
+    if (rentals.length) m += '\nI also need: ' + rentals.join(', ');
+    m += '\nName: ' + f.name.value + '\n\nPlease let me know if the date is available and the price. Thank you!';
+    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(m), '_blank', 'noopener');
+  });
+})();
+</script>
+
+<!-- jb-credit -->
+<div class="jb-credit" style="all:revert;display:block;margin:0;padding:14px 16px calc(14px + env(safe-area-inset-bottom,0px));background:#111;color:#cfcfcf;font:500 13px/1.5 system-ui,-apple-system,Segoe UI,Arial,sans-serif;text-align:center;position:relative;z-index:1">Website designed by <b style="color:#fff">Joseph Bortey</b> · <a href="tel:+233265768743" style="color:#fff;text-decoration:underline">026 576 8743</a></div>
+<style>@media (max-width:760px){.jb-credit{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))!important}}</style>
+<img src="https://hits.sh/josephbortey2003-droid.github.io/venetianevents-demo.svg" alt="" width="1" height="1" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none" referrerpolicy="no-referrer" loading="eager">
+</body>
+</html>
